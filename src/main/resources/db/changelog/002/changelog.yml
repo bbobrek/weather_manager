@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      dbms: postgresql
+      author: Bartosz Bobrek
+      logicalFilePath: classpath:db/changelog/002/changelog.yml
+      sqlFile:
+        path: 001_reverse_geocoding.sql
+        relativeToChangelogFile: true
+  - changeSet:
+      id: 2
+      dbms: postgresql
+      author: Bartosz Bobrek
+      logicalFilePath: classpath:db/changelog/002/changelog.yml
+      sqlFile:
+        path: 002_migrate_to_uuid.sql
+        relativeToChangelogFile: true

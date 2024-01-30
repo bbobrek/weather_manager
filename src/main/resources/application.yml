@@ -1,0 +1,65 @@
+server:
+  port: 8101
+  servlet:
+    context-path: /weather-manager
+  shutdown: graceful
+
+spring:
+  profiles:
+    active:  ^spring.profile.active^
+  application:
+    name: weather_manager
+  datasource: # default datasource
+    url: jdbc:postgresql://localhost:5432/eHome?currentSchema=weather_manager
+    username: DB_USERNAME
+    password: DB_PASSWORD
+    driverClassName: org.postgresql.Driver
+  hikari:
+    pool-name: "hikari-ds-default"
+    maximum-pool-size: 5
+  jpa:
+    generate-ddl: false
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: none
+        format_sql: false
+        generate_statistics: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          batch_size: 2000
+          lob:
+            non_contextual_creation: true
+  liquibase:
+    change-log: classpath:db/changelog/changelog.yml
+    enabled: true
+    default_schema: weather_manager
+  lifecycle:
+    timeout-per-shutdown-phase: "20s"
+
+logging:
+  level:
+    root: info
+
+visual:
+  weather:
+    url: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{lat},{lon}/next9days"
+    key: VISUAL_CROSSING_API_KEY
+    params:
+      unitGroup: "metric"
+      elements: "sunriseEpoch,sunsetEpoch,datetime,datetimeEpoch,name,address,resolvedAddress,latitude,longitude,tempmax,tempmin,temp,feelslikemax,feelslikemin,feelslike,humidity,precip,precipprob,precipcover,preciptype,snow,snowdepth,windgust,windspeed,winddir,pressure,cloudcover,visibility,conditions,description,icon"
+      iconSet: "icons2"
+      include: "hours,days,current"
+      contentType: "json"
+      options: "nonulls"
+big:
+  data:
+    cloud:
+      url: "https://api.bigdatacloud.net/data/reverse-geocode"
+      key: BIG_DATA_CLOUD_API_KEY
+
+weather:
+  authorization:
+    api-key: "IJbFzyH6SDbdtNi2kExBcsb19QnfrpRSi3uufSxdaF7D3OVaDx2ES7DjtdeWcHb2"

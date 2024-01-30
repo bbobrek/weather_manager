@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      dbms: postgresql
+      author: Bartosz Bobrek
+      logicalFilePath: classpath:db/changelog/001_init_schema/changelog.yml
+      sqlFile:
+        path: 001_init_schema.sql
+        relativeToChangelogFile: true
+  - changeSet:
+      id: 2
+      dbms: postgresql
+      author: Bartosz Bobrek
+      logicalFilePath: classpath:db/changelog/001_init_schema/changelog.yml
+      sqlFile:
+        path: 002_icon_columns.sql
+        relativeToChangelogFile: true
+  - changeSet:
+      id: 3
+      dbms: postgresql
+      author: Bartosz Bobrek
+      logicalFilePath: classpath:db/changelog/001_init_schema/changelog.yml
+      sqlFile:
+        path: 003_current_weather_conditions.sql
+        relativeToChangelogFile: true

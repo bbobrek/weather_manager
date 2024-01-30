@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: 001_init_schema/changelog.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 002/changelog.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 003/changelog.yml
+      relativeToChangelogFile: true
